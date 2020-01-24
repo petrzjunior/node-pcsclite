@@ -26,7 +26,7 @@ for:
       - image: macOS
 
   before_build:
-  - npm install yarn
+  - npm install -g yarn
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
