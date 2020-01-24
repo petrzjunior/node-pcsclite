@@ -15,10 +15,12 @@ clone_depth: 5                      # clone entire repository history if not def
 
 # scripts to run before build
 before_build:
-  - yarn install
+  - sudo apt-get install -y pcsc-lite libpcsclite-dev
+  - sudo systemctl start pcscd
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
+  - yarn install
 
 # scripts to run after build (working directory and environment changes are persisted from the previous steps)
 after_build:
