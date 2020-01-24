@@ -39,7 +39,7 @@ environment:
     - nodejs_version: "13"
 
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - nvm use $env:nodejs_version
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
