@@ -28,13 +28,5 @@ build_script:
 # scripts to run after build (working directory and environment changes are persisted from the previous steps)
 after_build:
 
-before_test:
-
-# to run your custom scripts instead of automatic tests
-test_script:
-  - node examples/example.js
-
-# scripts to run after tests
-after_test:
-
+tests: off
 deploy: off
