@@ -6,9 +6,9 @@ max_jobs: 1
 
 # Build worker image (VM template)
 image:
-#  - Visual Studio 2019
   - Ubuntu
   - macOS
+  - Visual Studio 2019
 
 clone_depth: 5                      # clone entire repository history if not defined
 
@@ -20,6 +20,13 @@ for:
 
   before_build:
   - sudo apt-get install -y libpcsclite1 libpcsclite-dev pcscd
+-
+  matrix:
+    only:
+      - image: macOS
+
+  before_build:
+  - npm install yarn
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
