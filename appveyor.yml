@@ -15,8 +15,11 @@ clone_depth: 5                      # clone entire repository history if not def
 
 # scripts to run before build
 before_build:
-  - sudo apt-get install -y pcsc-lite libpcsclite-dev
-  - sudo systemctl start pcscd
+  - git clone https://salsa.debian.org/rousseau/PCSC.git
+  - cd PCSC
+  - ./bootstrap
+  - ./configure
+  - make
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
