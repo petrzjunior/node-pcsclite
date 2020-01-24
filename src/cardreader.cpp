@@ -331,7 +331,7 @@ NAN_METHOD(CardReader::Close) {
     info.GetReturnValue().Set(Nan::New<Number>(result));
 }
 
-void CardReader::HandleReaderStatusChange(uv_async_t *handle, int status) {
+void CardReader::HandleReaderStatusChange(uv_async_t *handle) {
 
     Nan::HandleScope scope;
 
@@ -374,8 +374,7 @@ void CardReader::HandleReaderStatusChange(uv_async_t *handle, int status) {
         Local<Value> argv[1] = {
             Nan::New("_end").ToLocalChecked(), // event name
         };
-
-        Nan::MakeCallback(async_baton->reader->handle(), "emit", 1, argv);
+		async_resource->runInAsyncScope(async_baton->reader->handle(), "emit", 1, argv);
     }
 
     if (reader->m_status_thread) {
